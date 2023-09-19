@@ -43,7 +43,7 @@ class OnlineBuildPage extends FairServiceWidget {
     3. 返回在线构建任务id给调用方
      */
     int buildStatus = 2; //构建中
-    String patchcdnUrl = "";
+    String patchCdnUrl = "";
     String errorLogUrl = "";
     int buildId = -1;
     await withTransaction<void>(() async {
@@ -54,7 +54,7 @@ class OnlineBuildPage extends FairServiceWidget {
           patchBuildName: patchBuildName,
           flutterVersion: flutterVersion,
           buildStatus: buildStatus,
-          patchcdnUrl: patchcdnUrl,
+          patchCdnUrl: patchCdnUrl,
           errorLogUrl: errorLogUrl);
       /*
        1.执行数据库插入操作，
@@ -78,7 +78,7 @@ class OnlineBuildPage extends FairServiceWidget {
    * 3.执行flutter pub get
    * 4.执行flutter pub run build_runner build
    * 5.上传build产物到cdn，获得cdn上传后的url
-   * 6.更新patch_online_build数据库表buildId对应的数据buildStatus patchcdnUrl
+   * 6.更新patch_online_build数据库表buildId对应的数据buildStatus patchCdnUrl
    * */
   void onlineBuildProcessHandle(
       int buildId,
@@ -157,13 +157,13 @@ class OnlineBuildPage extends FairServiceWidget {
   /*
   * 同步操作至数据库，更新表数据
   * */
-  void updateBuildIdTableData(int buildId, int buildStatus, String patchcdnUrl,
+  void updateBuildIdTableData(int buildId, int buildStatus, String patchCdnUrl,
       String errorLogUrl) async {
     final dao = OnlineBuildDao();
     var onlineBuild = await dao.getByBuildId(buildId);
     if (onlineBuild != null) {
       onlineBuild.buildStatus = buildStatus;
-      onlineBuild.patchcdnUrl = patchcdnUrl;
+      onlineBuild.patchCdnUrl = patchCdnUrl;
       onlineBuild.errorLogUrl = errorLogUrl;
       dao.updateByOnlineBuild(onlineBuild);
     }

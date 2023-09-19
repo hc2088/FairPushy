@@ -65,7 +65,7 @@ class CreatePatchAndBuildPage extends FairServiceWidget {
             remark: remark,
             bundleName: bundleName,
             bundleVersion: bundleVersion,
-            update_time: DateTime.now().toString(),
+            update_time: DateTime.now(),
             patchGitUrl: patchGitUrl,
             patchGitBranch: patchGitBranch,
             flutterVersion: flutterVersion);
@@ -134,7 +134,7 @@ class CreatePatchAndBuildPage extends FairServiceWidget {
     if (checkBuildStatusResult.isSuccess() &&
         checkBuildStatusResult.data is Map) {
       var buildStatus = checkBuildStatusResult.data["buildStatus"];
-      var patchcdnUrl = checkBuildStatusResult.data["patchcdnUrl"];
+      var patchCdnUrl = checkBuildStatusResult.data["patchCdnUrl"];
       var errorLogUrl = checkBuildStatusResult.data["errorLogUrl"];
       String? patchStatus = null;
       if (buildStatus == 0) {
@@ -145,7 +145,7 @@ class CreatePatchAndBuildPage extends FairServiceWidget {
         patchStatus = "3";
       }
       if (patchStatus != null) {
-        updatePatch(dao, bundleId, patchStatus, patchcdnUrl);
+        updatePatch(dao, bundleId, patchStatus, patchCdnUrl);
         return true;
       } else {
         return false;

@@ -18,7 +18,7 @@ class Patch extends Entity<Patch> implements HandyJSON {
     required String remark, //补丁状态备注信息
     required String bundleName, //补丁名字
     String? bundleVersion, //补丁版本
-    String? update_time, //更新时间
+    DateTime? update_time, //更新时间
     String? patchGitUrl, //在线构建git地址
     String? patchGitBranch, //在线构建git分支
     String? flutterVersion, //在线构建Flutter分支
@@ -31,7 +31,7 @@ class Patch extends Entity<Patch> implements HandyJSON {
           remark: remark,
           bundleName: bundleName,
           bundleVersion: bundleVersion,
-          update_time: update_time = DateTime.now().toString(),
+          update_time: update_time = DateTime.now(),
           patchGitUrl: patchGitUrl,
           patchGitBranch: patchGitBranch,
           flutterVersion: flutterVersion);
@@ -39,12 +39,12 @@ class Patch extends Entity<Patch> implements HandyJSON {
   factory Patch.fromRow(Row row) {
     final app_id = row.fieldAsString('app_id');
     final bundle_id = row.fieldAsInt('bundle_id');
-    final patch_url = row.fieldAsString('patch_url');
+    final patch_url = row.fieldAsString('patchCdnUrl');
     final status = row.fieldAsString('status');
     final remark = row.fieldAsString('remark');
     final bundleName = row.fieldAsString('bundle_name');
     final bundleVersion = row.fieldAsString('bundle_version');
-    final updateTime = row.fieldAsString('update_time');
+    final updateTime = row.fieldAsDateTime('update_time');
     final patchGitUrl = row.fieldAsString('patchGitUrl');
     final patchGitBranch = row.fieldAsString('patchGitBranch');
     final flutterVersion = row.fieldAsString('flutterVersion');
@@ -88,7 +88,7 @@ class Patch extends Entity<Patch> implements HandyJSON {
   late String bundleName;
   late String? bundleVersion;
   late DateTime? create_time;
-  late String? update_time;
+  late DateTime? update_time;
   late String? patchGitUrl;
   late String? patchGitBranch;
   late String? flutterVersion;
@@ -96,19 +96,19 @@ class Patch extends Entity<Patch> implements HandyJSON {
   Map<String, dynamic> toJson() => {
         'appId': app_id,
         'bundleId': bundle_id,
-        'patchUrl': patch_url,
+        'patchCdnUrl': patch_url,
         'status': status,
         'remark': remark,
         'bundleName': bundleName,
         'bundleVersion': bundleVersion,
-        'updateTime': update_time,
+        'updateTime': update_time.toString(),
         'patchGitUrl': patchGitUrl,
         'patchGitBranch': patchGitBranch,
         'flutterVersion': flutterVersion,
       };
 
   Map<String, dynamic> toPatchJson() => {
-        'patchUrl': patch_url,
+        'patchCdnUrl': patch_url,
         'bundleVersion': bundleVersion,
       };
 
@@ -119,7 +119,7 @@ class Patch extends Entity<Patch> implements HandyJSON {
   FieldList get fields => [
         'app_id',
         'bundle_id',
-        'patch_url',
+        'patchCdnUrl',
         'status',
         'remark',
         'bundle_name',

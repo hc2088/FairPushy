@@ -44,7 +44,7 @@ class CreatePatchPage extends FairServiceWidget {
             remark: remark,
             bundleName: bundleName,
             bundleVersion: bundleVersion,
-            update_time: DateTime.now().toString());
+            update_time: DateTime.now());
         if (int.parse(bundleId) > 0) {
           await update(patch, dao);
           response = ResponseError(data: null);

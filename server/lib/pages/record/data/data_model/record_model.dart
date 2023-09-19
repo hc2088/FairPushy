@@ -14,21 +14,21 @@ class Record extends Entity<Record> implements HandyJSON {
     required String app_key, //app唯一标识
     required String operator, //操作记录人名字
     required String operatio_content, //操作内容
-    String? operation_time, //操作时间
+    DateTime? operation_time, //操作时间
   }) =>
       Record._internal(
           app_key: app_key,
           record_id: 0,
           operator: operator,
           operatio_content: operatio_content,
-          operation_time: operation_time = DateTime.now().toString());
+          operation_time: operation_time = DateTime.now());
 
   factory Record.fromRow(Row row) {
     final app_key = row.fieldAsString('app_key');
     final record_id = row.fieldAsInt('record_id');
     final operator = row.fieldAsString('operator');
     final operatio_content = row.fieldAsString('operatio_content');
-    final updateTime = row.fieldAsString('operation_time');
+    final updateTime = row.fieldAsDateTime('operation_time');
 
     return Record._internal(
         app_key: app_key,
@@ -37,7 +37,6 @@ class Record extends Entity<Record> implements HandyJSON {
         operatio_content: operatio_content,
         operation_time: updateTime);
   }
-
 
   /*
   * 项目模型初始化方法
@@ -54,14 +53,14 @@ class Record extends Entity<Record> implements HandyJSON {
   late int record_id;
   late String operator;
   late String operatio_content;
-  late String? operation_time;
+  late DateTime? operation_time;
 
   Map<String, dynamic> toJson() => {
         'app_key': app_key,
         'record_id': record_id,
         'operator': operator,
         'operatio_content': operatio_content,
-        'operation_time': operation_time,
+        'operation_time': operation_time.toString(),
       };
 
   /*

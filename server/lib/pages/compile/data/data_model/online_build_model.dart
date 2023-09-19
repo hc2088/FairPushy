@@ -10,7 +10,7 @@ abstract class HandyJSON {
 * Copyright © 2022 58. All rights reserved.
 * */
 class OnlineBuild extends Entity<OnlineBuild> implements HandyJSON {
-  //buildId patchGitUrl patchBuildName flutterVersion buildStatus patchcdnUrl errorLogUrl
+  //buildId patchGitUrl patchBuildName flutterVersion buildStatus patchCdnUrl errorLogUrl
 
   late int buildId; //在线构建任务id
   late String patchGitUrl; //补丁项目git地址
@@ -18,7 +18,7 @@ class OnlineBuild extends Entity<OnlineBuild> implements HandyJSON {
   late String patchBuildName; //补丁项目构建成功后压缩包名称
   late String flutterVersion; //构建项目时使用的flutter版本
   late int buildStatus; //在线构建任务状态 0：成功 1：失败 2：构建中
-  late String patchcdnUrl; //在线构建任务成功后，资源上传到cdn后生成的地址 默认为空传，buildStatus为0时该值有效
+  late String patchCdnUrl; //在线构建任务成功后，资源上传到cdn后生成的地址 默认为空传，buildStatus为0时该值有效
   late String errorLogUrl; //在线构建任务失败的日志 默认为空传，buildStatus为1时该值有效
 
   OnlineBuild._internal({
@@ -28,7 +28,7 @@ class OnlineBuild extends Entity<OnlineBuild> implements HandyJSON {
     required this.patchBuildName,
     required this.flutterVersion,
     required this.buildStatus,
-    required this.patchcdnUrl,
+    required this.patchCdnUrl,
     required this.errorLogUrl,
   }) : super(buildId);
 
@@ -41,7 +41,7 @@ class OnlineBuild extends Entity<OnlineBuild> implements HandyJSON {
     required String patchBuildName,
     required String flutterVersion,
     required int buildStatus,
-    required String patchcdnUrl,
+    required String patchCdnUrl,
     required String errorLogUrl,
   }) => OnlineBuild._internal(
     buildId: Entity.notSet,
@@ -50,7 +50,7 @@ class OnlineBuild extends Entity<OnlineBuild> implements HandyJSON {
     patchBuildName: patchBuildName,
     flutterVersion: flutterVersion,
     buildStatus: buildStatus,
-    patchcdnUrl: patchcdnUrl,
+    patchCdnUrl: patchCdnUrl,
     errorLogUrl: errorLogUrl,
   );
 
@@ -61,7 +61,7 @@ class OnlineBuild extends Entity<OnlineBuild> implements HandyJSON {
     final patchBuildName = row.fieldAsString('patchBuildName');
     final flutterVersion = row.fieldAsString('flutterVersion');
     final buildStatus = row.fieldAsInt('buildStatus');
-    final patchcdnUrl = row.fieldAsString('patchcdnUrl');
+    final patchCdnUrl = row.fieldAsString('patchCdnUrl');
     final errorLogUrl = row.fieldAsString('errorLogUrl');
 
     return OnlineBuild._internal(
@@ -71,7 +71,7 @@ class OnlineBuild extends Entity<OnlineBuild> implements HandyJSON {
       patchBuildName: patchBuildName,
       flutterVersion: flutterVersion,
       buildStatus: buildStatus,
-      patchcdnUrl: patchcdnUrl,
+      patchCdnUrl: patchCdnUrl,
       errorLogUrl: errorLogUrl,
     );
   }
@@ -83,7 +83,7 @@ class OnlineBuild extends Entity<OnlineBuild> implements HandyJSON {
     "patchBuildName": patchBuildName,
     "flutterVersion": flutterVersion,
     "buildStatus": buildStatus,
-    "patchcdnUrl": patchcdnUrl,
+    "patchCdnUrl": patchCdnUrl,
     "errorLogUrl": errorLogUrl
   };
 
@@ -97,7 +97,7 @@ class OnlineBuild extends Entity<OnlineBuild> implements HandyJSON {
     'patchBuildName',
     'flutterVersion',
     'buildStatus',
-    'patchcdnUrl',
+    'patchCdnUrl',
     'errorLogUrl'
   ];
 
@@ -111,7 +111,7 @@ class OnlineBuild extends Entity<OnlineBuild> implements HandyJSON {
     patchBuildName,
     flutterVersion,
     buildStatus,
-    patchcdnUrl,
+    patchCdnUrl,
     errorLogUrl
   ];
 }

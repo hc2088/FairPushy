@@ -38,7 +38,7 @@ class CreateProjectPage extends FairServiceWidget {
           app_name: appName,
           app_description: appInfo,
           app_pic_url: appLogoUrl,
-          create_time: DateTime.now()
+          create_time: DateTime.now(),
       );
       await dao.persist(project);
     }).catchError(((error, stack) {

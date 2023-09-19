@@ -27,7 +27,7 @@ class CheckBuildStatusPage extends FairServiceWidget {
       var onlineBuild = await dao.getByBuildId(int.parse(buildId));
       if (onlineBuild != null) {
         response["buildStatus"] = onlineBuild.buildStatus;
-        response["patchcdnUrl"] = onlineBuild.patchcdnUrl;
+        response["patchCdnUrl"] = onlineBuild.patchCdnUrl;
         response["errorLogUrl"] = onlineBuild.errorLogUrl;
       } else {
         ResponseError(msg: "buildId不存在");

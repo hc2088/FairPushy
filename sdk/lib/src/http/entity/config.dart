@@ -1,6 +1,6 @@
 class Config {
   String? id;
-  String? patchUrl;
+  String? patchCdnUrl;
   String? bundleVersion;
   String? bundleId;
   String? bundleName;
@@ -9,7 +9,7 @@ class Config {
   String? updateTime;
 
   Config(
-      {this.patchUrl,
+      {this.patchCdnUrl,
       this.bundleVersion,
       this.id,
       this.bundleId,
@@ -20,7 +20,7 @@ class Config {
 
   factory Config.fromJson(Map<String, dynamic> json) {
     return Config(
-      patchUrl: json['patchUrl'],
+      patchCdnUrl: json['patchCdnUrl'],
       bundleVersion: json['bundleVersion'],
       id: json['_id'].toString(),
       bundleId: json['bundleId'].toString(),

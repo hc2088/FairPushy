@@ -1,8 +1,10 @@
+import '../../server/fair_server_routes.dart';
+
 class FairRequesterConstants {
   static const String baseUrl = 'http://127.0.0.1:8080';
   static const String packingPlatformHost = 'http://127.0.0.1:8080';
-  static const String cdnFileHost = '';
-  static const String cdnTokenHost = '';
+  static const String cdnFileHost = 'https://wos4.58.com/';
+  static const String cdnTokenHost = 'https://token.wos.58dns.org/';
 
   //上传文件私有写接口
   static String cdnUploadFile() {
@@ -16,12 +18,11 @@ class FairRequesterConstants {
 
   //打包平台在线构建接口
   static String onlineBuildInPackingPlatform() {
-    return "/app/onlineBuild/";
+    return Routes.ONLINE_BUILD;
   }
 
   //打包平台检查构建状态
   static String checkBuildStatusInPackingPlatform() {
-    return "/app/checkBuildStatus/";
+    return Routes.CHECK_BUILD_STATUS;
   }
-
 }

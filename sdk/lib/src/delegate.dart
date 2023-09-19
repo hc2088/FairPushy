@@ -29,7 +29,7 @@ class Delegate {
   //处理配置请求，module下载等
   static Future<Code> updateFW({String? url, required String bundleId}) async {
     await Delegate.loadFolderPath();
-    String updateUrl = url == null ? ProjectConfig.instance.BUNDLE_PATCH_URL : url;
+    String updateUrl = url == null ? ProjectConfig.instance.BUNDLE_PATCH_URL+"/app/patch" : url;
     var params = <String, dynamic>{};
     params.putIfAbsent("bundleId", () => bundleId);
     if (ProjectConfig.instance.isDebug) {
@@ -62,7 +62,7 @@ class Delegate {
     }
     Logger.logi(
         '开始下载文件...bundleid = ${config.bundleId}}, bundleVersion = ${config.bundleVersion}');
-    var response = await HttpClient.downloadFile(config.patchUrl!, "", bundleId,
+    var response = await HttpClient.downloadFile(config.patchCdnUrl!, "", bundleId,
         token: CancelToken());
     if (response?.code == Success && response?.data != null) {
       Logger.logi('下载完成，正在解压......');

@@ -23,7 +23,7 @@ Future<ResponseBaseModel> recordOperating(
           app_key: appId,
           operator: operator,
           operatio_content: content,
-          operation_time: DateTime.now().toString());
+          operation_time: DateTime.now());
       response = await dao.persist(record);
     });
   } catch (e) {

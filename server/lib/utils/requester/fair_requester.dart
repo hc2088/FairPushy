@@ -13,7 +13,7 @@ class FairRequester {
 
   ///cdn获取token
   Future<dynamic> getToken(String fileName, String bucketName) async {
-    return await FairRequesterDio(baseUrl: FairRequesterConstants.cdnTokenHost)
+    return await FairRequesterDio(baseUrl: FairRequesterConstants.cdnTokenHost,headers: {"Authorization": 'a0xSSGdGZURrTGtMOnlUOVdmVGllYUNqUkM1MXl6Rlh1Y1J4Tnh6azFnMnh3'})
         .get(FairRequesterConstants.getCdnToken(),
             params: {"filename": fileName, "bucket": bucketName});
   }
