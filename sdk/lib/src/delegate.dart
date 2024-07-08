@@ -29,7 +29,7 @@ class Delegate {
   //处理配置请求，module下载等
   static Future<Code> updateFW({String? url, required String bundleId}) async {
     await Delegate.loadFolderPath();
-    String updateUrl = url == null ? ProjectConfig.instance.BUNDLE_PATCH_URL+"/app/patch" : url;
+    String updateUrl = url == null ? ProjectConfig.instance.BUNDLE_PATCH_URL : url;
     var params = <String, dynamic>{};
     params.putIfAbsent("bundleId", () => bundleId);
     if (ProjectConfig.instance.isDebug) {
