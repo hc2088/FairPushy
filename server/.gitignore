@@ -8,6 +8,7 @@
 .buildlog/
 .history
 .svn/
+.idea/
 
 # IntelliJ related
 *.ipr
@@ -47,3 +48,4 @@ app.*.map.json
 pubspec.lock
 log/
 .DS_Store
+
